@@ -22,7 +22,10 @@ export class User extends Document{
     })
     isActive: boolean;
 
-    @Prop([String])
+    @Prop({
+        type: [String],
+        default: ['user']
+    })
     roles: string[];
     
 }
