@@ -7,7 +7,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto.';
 import { User } from './entities/auth.entity';
 import { ValidRoles } from './interfaces';
-import { ApiBody, ApiTags } from '@nestjs/swagger';
+import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Authorization')
 @Controller('auth')

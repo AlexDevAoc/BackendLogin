@@ -15,7 +15,7 @@ npm i -g @nestjs/cli
 ```
 4. Renombrar ```.env.template``` a ```.env```
 
-5.Levantar la DB
+5. Levantar la DB con el siguiente comando docker
 ```
 docker-compose up  -d
 ```
@@ -24,6 +24,7 @@ docker-compose up  -d
 yarn start:dev
 ```
 ## Stack usado
-*MongoDB
-*Nest
-*Node 16.13.0
+*MongoDB 5
+*Nest CLI 10.3.2
+*Nest Core 10.3.3
+*Node 20.11.1
