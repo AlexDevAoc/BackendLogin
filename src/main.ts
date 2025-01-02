@@ -23,6 +23,7 @@ async function bootstrap() {
     .setTitle('Login Backend')
     .setDescription('Documentation of login')
     .setVersion('1.0')
+    .addBearerAuth( { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' }, 'access-token', )
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/explorer', app, document)

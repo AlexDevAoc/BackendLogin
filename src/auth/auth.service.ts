@@ -30,8 +30,13 @@ export class AuthService {
         password: bcrypt.hashSync(password, 10)
       });
 
+      const cleanUser = {
+        email: user.email,
+        fullName: user.fullName
+      }
+
       return {
-        ...user,
+        ...cleanUser,
         token: this.getJwtToken({ _id: user._id })
       }
 
@@ -44,7 +49,7 @@ export class AuthService {
 
     const { password, email } = loginUserDto;
 
-    const user = await this.userModel.findOne({ email }).select('email password');
+    const user = await this.userModel.findOne({ email }).select('email password').lean();
 
     if (!user)
       throw new UnauthorizedException('Credentials are not valid')
@@ -71,5 +76,14 @@ export class AuthService {
 
     console.error(error)
     throw new InternalServerErrorException('Check Server logs');
+  }
+
+  async private(userEmail: string) {
+    const user = await this.userModel.findOne({ userEmail }).select('email password').lean();
+
+    return {
+      ...user,
+      token: this.getJwtToken({ _id: user._id })
+    }
   }
 }
